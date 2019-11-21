@@ -7,16 +7,16 @@ const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin')
 
 module.exports = {
   entry: {
-    app: './src/index.tsx'
+    app: './src/index.tsx',
   },
   output: {
-    path: path.resolve(__dirname, '..', 'dist')
+    path: path.resolve(__dirname, '..', 'dist'),
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, '../src')
+      '@': path.resolve(__dirname, '../src'),
     },
-    extensions: ['.ts', '.tsx', '.js', 'jsx']
+    extensions: ['.ts', '.tsx', '.js', 'jsx'],
   },
 
   module: {
@@ -25,8 +25,8 @@ module.exports = {
         test: /\.(j|t)sx?$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
-        }
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.(png|jpe?g|gif|webp)$/,
@@ -39,10 +39,10 @@ module.exports = {
               // 输出路径
               outputPath: 'images/',
               // 小于 10k 的图片转成 base64 编码
-              limit: 10240 // 大于10k的会调用file-loader
-            }
-          }
-        ]
+              limit: 10240, // 大于10k的会调用file-loader
+            },
+          },
+        ],
       },
       {
         test: /\.(eot|woff2?|ttf|svg)$/,
@@ -53,12 +53,12 @@ module.exports = {
               name: '[name]-[hash:5].[ext]',
               limit: 5000, // fonts file size <= 5KB, use 'base64'; else, output svg file
               publicPath: 'fonts/',
-              outputPath: 'fonts/'
-            }
-          }
-        ]
-      }
-    ]
+              outputPath: 'fonts/',
+            },
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -70,30 +70,30 @@ module.exports = {
         // 压缩 HTML 文件
         removeComments: true, // 移除 HTML 中的注释
         collapseWhitespace: false, // 删除空白符与换行符
-        minifyCSS: true // 压缩内联 css
+        minifyCSS: true, // 压缩内联 css
       },
       filename: 'index.html',
-      template: path.resolve(__dirname, '../public/index.html')
+      template: path.resolve(__dirname, '../public/index.html'),
     }),
     // 导入全局变量，不用一个一个的import
     new webpack.ProvidePlugin({
-      $: 'jquery'
+      $: 'jquery',
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        VUE_BASE_URL: JSON.stringify('http://www.baidu.com')
-      }
+        VUE_BASE_URL: JSON.stringify('http://www.baidu.com'),
+      },
     }),
     new webpack.DllReferencePlugin({
-      manifest: require('../public/dll/vendor.manifest')
+      manifest: require('../public/dll/vendor.manifest'),
     }),
     new AddAssetHtmlPlugin([
       {
         filepath: path.resolve(__dirname, '../public/dll/dll_vendor.js'),
         outputPath: 'dll',
         publicPath: 'dll',
-        includeSourcemap: false
-      }
-    ])
-  ]
+        includeSourcemap: false,
+      },
+    ]),
+  ],
 }

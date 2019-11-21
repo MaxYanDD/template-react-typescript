@@ -6,7 +6,20 @@
   "scripts": {
     "dev": "webpack-dev-server --config ./build/webpack.dev.conf.js",
     "build": "webpack --config ./build/webpack.prod.conf.js",
-    "build:dll": "webpack --config ./build/webpack.dll.conf.js"
+    "build:dll": "webpack --config ./build/webpack.dll.conf.js",
+    "eslint": "eslint --ext .tsx,.ts --fix ./src"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "npm run eslint",
+      "prettier .prettierrc.js --write",
+      "git add"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -35,17 +48,23 @@
     "css-loader": "^3.2.0",
     "eslint": "^6.6.0",
     "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-jsx-control-statements": "^2.2.1",
+    "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^2.3.0",
     "file-loader": "^4.2.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.4.3",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.13.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
+    "prettier": "^1.19.1",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
     "typescript": "^3.7.2",
@@ -53,13 +72,14 @@
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0",
-    "webpack-merge": "^4.2.2"
+    "webpack-merge": "^4.2.2",
+    "clean-webpack-plugin": "^3.0.0"
   },
   "dependencies": {
     "@babel/polyfill": "^7.7.0",
     "@babel/runtime": "^7.7.2",
     "@babel/runtime-corejs2": "^7.7.2",
-    "clean-webpack-plugin": "^3.0.0",
+    "antd": "^3.25.2",
     "core-js": "^3.4.1",
     "events": "^3.0.0",
     "jquery": "^3.4.1",

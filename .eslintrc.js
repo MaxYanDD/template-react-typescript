@@ -1,58 +1,47 @@
 module.exports = {
-  extends: ['eslint:recommended', 'plugin:react/recommended'],
-  parserOptions: {
-    ecmaVersion: 2019,
-    sourceType: 'module'
-  },
-  env: {
-    node: true,
-    browser: true,
-    commonjs: true,
-    es6: true
-  },
-  parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'react-hooks'],
-  globals: {
-    // 这里填入你的项目需要的全局变量
-    // 这里值为 false 表示这个全局变量不允许被重新赋值，比如：
-    // React: false,
-    // ReactDOM: false
-  },
+  parser: '@typescript-eslint/parser', // Specifies the ESLint parser
+  extends: [
+    'plugin:@typescript-eslint/recommended', // Uses the recommended rules from the @typescript-eslint/eslint-plugin
+    'plugin:react/recommended',
+    'plugin:jsx-control-statements/recommended',
+    'prettier/@typescript-eslint', // Uses eslint-config-prettier to disable ESLint rules from @typescript-eslint/eslint-plugin that would conflict with prettier
+    'plugin:prettier/recommended', // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
+    'prettier/react',
+  ],
   settings: {
     react: {
-      pragma: 'React',
-      version: 'detect'
-    }
+      version: 'detect',
+    },
+  },
+  plugins: ['@typescript-eslint', 'react', 'jsx-control-statements', 'prettier'],
+  env: {
+    browser: true,
+    node: true,
+    es6: true,
+    mocha: true,
+    'jsx-control-statements/jsx-control-statements': true,
+  },
+  globals: {
+    $: true,
   },
   rules: {
-    // 这里填入你的项目需要的个性化配置，比如：
-    //
-    // // @fixable 一个缩进必须用两个空格替代
-    semi: ['error', 'never'],
-    'no-console': 'off',
-    'no-unused-vars': [
-      'warn',
-      {
-        vars: 'all',
-        args: 'none',
-        caughtErrors: 'none'
-      }
-    ],
-    'max-nested-callbacks': 'off',
-    'react/no-children-prop': 'off',
-    'typescript/member-ordering': 'off',
-    'typescript/member-delimiter-style': 'off',
-    'react/jsx-indent-props': 'off',
-    'react/no-did-update-set-state': 'off',
-    'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
-    indent: [
-      'off',
-      2,
-      {
-        SwitchCase: 1,
-        flatTernaryExpressions: true
-      }
-    ]
-  }
+    'prettier/prettier': 1,
+    'no-console': 0,
+    eqeqeq: ['warn', 'always'],
+    'prefer-const': ['error', { destructuring: 'all', ignoreReadBeforeAssign: true }],
+    '@typescript-eslint/indent': ['error', 2, { VariableDeclarator: 2, SwitchCase: 1 }],
+    '@typescript-eslint/no-unused-vars': 0,
+    '@typescript-eslint/interface-name-prefix': 0,
+    '@typescript-eslint/explicit-member-accessibility': 0,
+    '@typescript-eslint/no-triple-slash-reference': 0,
+    '@typescript-eslint/ban-ts-ignore': 0,
+    '@typescript-eslint/no-this-alias': 0,
+    '@typescript-eslint/no-empty-interface': 0,
+    '@typescript-eslint/triple-slash-reference': ['error', { path: 'always', types: 'never', lib: 'never' }],
+    '@typescript-eslint/explicit-function-return-type': 0,
+    // React相关校验规则
+    'react/jsx-no-undef': [2, { allowGlobals: true }],
+    'react/prop-types': 0,
+    'jsx-control-statements/jsx-use-if-tag': 0,
+  },
 }

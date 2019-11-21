@@ -3,7 +3,7 @@
     [
       "@babel/preset-env",
       {
-        "corejs": 3, // polyfill 需要使用@babel/runtime-corejs2
+        "corejs": 3, // polyfill
         "useBuiltIns": "usage" //按需引入,即使用什么新特性打包什么新特性, 可以减小打包的体积
       }
     ],
@@ -15,8 +15,8 @@
       "import",
       {
         "libraryName": "antd",
-        "libraryDirectory": "lib",
-        "style": true
+        "libraryDirectory": "es",
+        "style": "css"
       }
     ],
     [
