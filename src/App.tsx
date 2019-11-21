@@ -38,16 +38,19 @@
 
 import * as React from 'react'
 import Button from './Button'
-
+import Demo1 from './demo/demo1'
+import Demo2 from './demo/demo2'
 interface Iprops {}
 
 interface Istate {
   count: number
+  value: string
 }
 
 class App extends React.Component<Iprops, Istate> {
   public state = {
     count: 1,
+    value: '',
   }
 
   public componentDidMount() {
@@ -60,11 +63,19 @@ class App extends React.Component<Iprops, Istate> {
   // 选择DOM
   private inputRef = React.createRef<HTMLInputElement>()
 
+  private onChange: React.ChangeEventHandler = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    this.setState({ value: e.target.value })
+  }
+
   public render() {
     return (
       <div ref={this.inputRef}>
         Hello world
         <Button />
+        <Demo1 value={this.state.value} onChange={this.onChange} />
+        <Demo2 />
       </div>
     )
   }
