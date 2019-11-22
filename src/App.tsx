@@ -38,16 +38,21 @@
 
 import * as React from 'react'
 import Button from './Button'
-
+import CustomHook from './hook/CustomHook'
+import ZH from './hook/ZH'
+import UseReducer from './hook/UseReducer'
+import UseReducer2 from './hook/UseReducer2'
 interface Iprops {}
 
 interface Istate {
   count: number
+  show: boolean
 }
 
 class App extends React.Component<Iprops, Istate> {
   public state = {
     count: 1,
+    show: false,
   }
 
   public componentDidMount() {
@@ -55,16 +60,23 @@ class App extends React.Component<Iprops, Istate> {
     this.setState({ count: 2 })
   }
 
-  private click = (): void => {}
+  private click = (): void => {
+    this.setState({ show: true })
+  }
 
   // 选择DOM
   private inputRef = React.createRef<HTMLInputElement>()
-
   public render() {
+    console.log('apprender')
+
     return (
       <div ref={this.inputRef}>
         Hello world
-        <Button />
+        {<Button show={this.state.show}>点我</Button>}
+        <CustomHook />
+        <ZH />
+        <UseReducer />
+        <UseReducer2 />
       </div>
     )
   }

@@ -39,6 +39,8 @@ module.exports = {
     '@typescript-eslint/no-empty-interface': 0,
     '@typescript-eslint/triple-slash-reference': ['error', { path: 'always', types: 'never', lib: 'never' }],
     '@typescript-eslint/explicit-function-return-type': 0,
+    '@typescript-eslint/camelcase': 0,
+    '@typescript-eslint/no-non-null-assertion': 0,
     // React相关校验规则
     'react/jsx-no-undef': [2, { allowGlobals: true }],
     'react/prop-types': 0,
