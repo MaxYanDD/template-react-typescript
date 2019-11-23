@@ -13,7 +13,12 @@ module.exports = {
       version: 'detect',
     },
   },
-  plugins: ['@typescript-eslint', 'react', 'jsx-control-statements', 'prettier'],
+  plugins: [
+    '@typescript-eslint',
+    'react',
+    'jsx-control-statements',
+    'prettier',
+  ],
   env: {
     browser: true,
     node: true,
@@ -28,8 +33,15 @@ module.exports = {
     'prettier/prettier': 1,
     'no-console': 0,
     eqeqeq: ['warn', 'always'],
-    'prefer-const': ['error', { destructuring: 'all', ignoreReadBeforeAssign: true }],
-    '@typescript-eslint/indent': ['error', 2, { VariableDeclarator: 2, SwitchCase: 1 }],
+    'prefer-const': [
+      'error',
+      { destructuring: 'all', ignoreReadBeforeAssign: true },
+    ],
+    '@typescript-eslint/indent': [
+      'error',
+      2,
+      { VariableDeclarator: 2, SwitchCase: 1 },
+    ],
     '@typescript-eslint/no-unused-vars': 0,
     '@typescript-eslint/interface-name-prefix': 0,
     '@typescript-eslint/explicit-member-accessibility': 0,
@@ -37,7 +49,10 @@ module.exports = {
     '@typescript-eslint/ban-ts-ignore': 0,
     '@typescript-eslint/no-this-alias': 0,
     '@typescript-eslint/no-empty-interface': 0,
-    '@typescript-eslint/triple-slash-reference': ['error', { path: 'always', types: 'never', lib: 'never' }],
+    '@typescript-eslint/triple-slash-reference': [
+      'error',
+      { path: 'always', types: 'never', lib: 'never' },
+    ],
     '@typescript-eslint/explicit-function-return-type': 0,
     '@typescript-eslint/camelcase': 0,
     '@typescript-eslint/no-non-null-assertion': 0,
