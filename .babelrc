@@ -4,7 +4,8 @@
       "@babel/preset-env",
       {
         "corejs": 3, // polyfill
-        "useBuiltIns": "usage" //按需引入,即使用什么新特性打包什么新特性, 可以减小打包的体积
+        "useBuiltIns": "usage", //按需引入,即使用什么新特性打包什么新特性, 可以减小打包的体积
+        "modules": false
       }
     ],
     "@babel/preset-typescript",
