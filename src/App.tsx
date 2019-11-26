@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import Index from './redux/Index'
+import store from '@/store'
+import { Provider } from 'react-redux'
+import About from '@/application/About'
 
-export default class App extends Component {
-  render() {
-    return (
-      <div>
-        <Index />
-      </div>
-    )
-  }
+export default function App() {
+  return (
+    <Provider store={store}>
+      <About />
+    </Provider>
+  )
 }
