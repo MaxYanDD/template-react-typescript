@@ -1,12 +1,18 @@
-import React, { Component } from 'react'
-import store from '@/store'
+import React from 'react'
+import store from '@/store/index.ts'
 import { Provider } from 'react-redux'
-import About from '@/application/About'
+import ChatRoom from './application/Chat/indexWithHook'
+import UseReducer from './demo/UseReducer'
 
-export default function App() {
+function App() {
   return (
     <Provider store={store}>
-      <About />
+      <>
+        <ChatRoom />
+        <UseReducer />
+      </>
     </Provider>
   )
 }
+
+export default App

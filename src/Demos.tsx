@@ -38,10 +38,10 @@
 
 import * as React from 'react'
 import Button from './Button'
-import CustomHook from './hook/CustomHook'
-import ZH from './hook/ZH'
-import UseReducer from './hook/UseReducer'
-import UseReducer2 from './hook/UseReducer2'
+import CustomHook from './demo/hook/CustomHook'
+import ZH from './demo/hook/ZH'
+import UseReducer from './demo/hook/UseReducer'
+import UseReducer2 from './demo/hook/UseReducer2'
 interface Iprops {}
 
 interface Istate {
