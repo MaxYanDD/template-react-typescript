@@ -14,24 +14,33 @@ module.exports = {
   mode: 'production',
   entry: {
     // 定义程序中打包公共文件的入口文件vendor.js
-    vendor: ['react', 'react-dom', 'react-router-dom', 'lodash']
+    vendor: [
+      'react',
+      'react-dom',
+      'react-router',
+      'lodash',
+      'react-router-dom',
+      'redux',
+      'react-redux',
+      'axios',
+    ],
   },
 
   output: {
     path: path.resolve(__dirname, '..', 'public/dll'),
     filename: 'dll_[name].js',
-    library: '[name]_[hash]'
+    library: '[name]_[hash]',
   },
 
   plugins: [
     new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: path.resolve(__dirname, '../public/dll')
+      cleanOnceBeforeBuildPatterns: path.resolve(__dirname, '../public/dll'),
     }),
     new webpack.DllPlugin({
       // manifest.json文件的输出位置
       path: path.resolve(__dirname, '../public/dll', '[name].manifest.json'),
       // 定义打包的公共vendor文件对外暴露的函数名
-      name: '[name]_[hash]'
-    })
-  ]
+      name: '[name]_[hash]',
+    }),
+  ],
 }
